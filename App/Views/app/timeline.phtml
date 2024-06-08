@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg menu">
+<nav class="navbar navbar-expand-lg menu "style="<?= $this->view->tema['tema'] == 'tema' ? '' : 'background-color:#0F0F0F; border-bottom:1px solid white;'?>">
 	<div class="container">
 	  <div class="navbar-nav">
 	  	<a class="menuItem" href="/timeline">
@@ -8,8 +8,17 @@
 	  	<a class="menuItem" href="/sair">
 	  		Sair
 	  	</a>
-			<img src="/img/twitter_logo.png" class="menuIco" />
+			<img src="/img/pngwing.com.png" class="menuIco" />
 	  </div>
+	  
+	  <?php if ($this->view->tema['tema'] == "tema") { ?>
+	  <form method="post" action="/alterarTema?tema=claro" style="margin-top:10px;"><button type="submit" class="btn btn-light">Tema escuro</button></form>
+	  <?php } ?>
+	  
+	  <?php if ($this->view->tema['tema'] == "temaEscuro") { ?>
+	  <form method="post" action="/alterarTema?tema=escuro" style="margin-top:10px;"><button type="submit" class="btn btn-dark">Tema claro</button></form>
+	  <?php } ?>
+	  
 	</div>
 </nav>
 
@@ -18,15 +27,15 @@
 		
 		<div class="col-md-3">
 
-			<div class="perfil">
+			<div class="perfil" style="<?= $this->view->tema['tema'] == "tema" ? '' : 'color:white;background:#343A40;border:1px solid #0F0F0F;'?>">
 				<div class="perfilTopo">
 
 				</div>
 
-				<div class="perfilPainel">
+				<div class="perfilPainel" >
 					
-					<div class="row mt-2 mb-2">
-						<div class="col mb-2">
+					<div class="row mt-2 mb-2" >
+						<div class="col mb-2" >
 							<span class="perfilPainelNome">
 								<?= $this->view->info_usuario['nome'] ?>
 							</span>
@@ -63,14 +72,14 @@
 
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-md-6" >
 			<div class="row mb-2">
-				<div class="col tweetBox">
+				<div class="col tweetBox" style="<?= $this->view->tema['tema'] == "tema" ? '' : 'color:white;background:#343A40;border:1px solid #0F0F0F;'?>">
 					<form method="post" action="/tweet">
 						<textarea class="form-control" name="tweet" id="exampleFormControlTextarea1" rows="3"></textarea>
 						
 						<div class="col mt-2 d-flex justify-content-end">
-							<button type="submit" class="btn btn-primary">Tweet</button>
+							<button type="submit" class="btn btn-primary" >Tweet</button>
 						</div>
 
 					</form>
@@ -78,7 +87,7 @@
 			</div>
 
 			<?php foreach($this->view->tweets as $id_tweet => $tweet) { ?>
-				<div class="row tweet">
+				<div class="row tweet" style="<?= $this->view->tema['tema'] == "tema" ? '' : 'color:white;background:#343A40;'?>">
 					<div class="col">
 						<p><strong><?=$tweet['nome']?></strong> <small><span class="text text-muted">- <?=$tweet['data']?></span></small></p>
 						<p><?=$tweet['tweet']?></p>
@@ -102,7 +111,7 @@
 					<ul class="pagination">
 
 						<li class="page-item">
-							<a class="page-link" href="?pagina=1" tabindex="-1">Primeira</a>
+							<a class="page-link <?= $this->view->tema['tema'] == "tema" ? '' : 'bg-dark text-light'?>" style="<?= $this->view->tema['tema'] == "tema" ? '' : 'border:1px solid #0F0F0F;'?>" href="?pagina=1" tabindex="-1">Primeira</a>
 						</li>
 						
 						<?php for ($i = 1; $i <= $this->view->total_de_paginas; $i++) { ?>
@@ -112,7 +121,7 @@
 						<?php } ?>
 
 						<li class="page-item">
-							<a class="page-link" href="?pagina=<?=$this->view->total_de_paginas?>">Última</a>
+							<a class="page-link <?= $this->view->tema['tema'] == "tema" ? '' : 'bg-dark text-light'?>" style="<?= $this->view->tema['tema'] == "tema" ? '' : 'border:1px solid #0F0F0F;'?>" href="?pagina=<?=$this->view->total_de_paginas?>">Última</a>
 						</li>
 
 					</ul>
@@ -125,8 +134,8 @@
 		</div>
 
 
-		<div class="col-md-3">
-			<div class="quemSeguir">
+		<div class="col-md-3" >
+			<div class="quemSeguir" style="<?= $this->view->tema['tema'] == "tema" ? '' : 'color:white;background:#343A40; border:1px solid #0F0F0F;'?>">
 				<span class="quemSeguirTitulo">Quem seguir</span><br />
 				<hr />
 				<a href="/quem_seguir" class="quemSeguirTxt">Procurar por pessoas conhecidas</a>

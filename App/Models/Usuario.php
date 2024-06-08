@@ -252,6 +252,36 @@
             return $stmt->fetch(\PDO::FETCH_ASSOC);
         }
 
+		public function tema() {
+			$query = "select tema from usuarios where id = :id_usuario";
+			
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':id_usuario', $this->__get('id'));
+			$stmt->execute();
+			
+			return $stmt->fetch(\PDO::FETCH_ASSOC);
+		}
+
+		public function alterarTema() {
+			$query = "update usuarios set tema = 'temaEscuro' where id = :id_usuario";
+			
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':id_usuario', $this->__get('id'));
+			$stmt->execute();
+			
+			return $this;
+		}
+		
+		public function alterarTemaEscuro() {
+			$query = "update usuarios set tema = 'tema' where id = :id_usuario";
+			
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':id_usuario', $this->__get('id'));
+			$stmt->execute();
+			
+			return $this;
+		}
+
     }
 
 ?>

@@ -39,6 +39,8 @@ class AppController extends Action {
 		$this->view->total_seguindo = $usuario->getTotalSeguindo();
 		$this->view->total_seguidores = $usuario->getTotalSeguidores();
 
+        $this->view->tema = $usuario->tema();
+
 		$this->render('timeline');
 		
 		
@@ -100,6 +102,8 @@ class AppController extends Action {
         $this->view->usuarios = $usuarios; // cria o atributo usuarios e coloca o array que está na variavel $usuarios dentro para que seja criados os cards com cada usuario retornado a partir de um foreach com base no atributo usuarios
         // provavelmente não precisaria disso, pois a variavel $usuarios que contem o array já está no contexto da página quemSeguir, então é só fazer um foreach com a variavel $usuarios ao invés do atributo usuarios 
 
+        $this->view->tema = $usuario->tema();
+
         $this->render('quemSeguir'); // renderiza a página quemSeguir
 
     }
@@ -139,6 +143,23 @@ class AppController extends Action {
         header('location: /timeline');
 
     }
+
+    public function alterarTema() {
+        
+        $this->validaAutenticacao();
+        
+        $usuario = Container::getModel('Usuario');
+        $usuario->__set('id', $_SESSION['id']);
+        
+        if ($_GET['tema'] == 'claro') {
+             $usuario->alterarTema();
+        } else if ($_GET['tema'] == 'escuro') {
+             $usuario->alterarTemaEscuro();
+        }
+        
+        header('location: /timeline');
+         
+     }
 
 }
 

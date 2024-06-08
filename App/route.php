@@ -68,6 +68,12 @@
                 'action' => 'removerTweet'
             );
 
+            $routes['alterarTema'] = array( // criando a rota alterarTema, para quando o botão de tems for clicado ele seja redirecionado para a action alterarTema no AppController 
+                'route' => '/alterarTema',
+                'controller' => 'AppController',
+                'action' => 'alterarTema'
+            );
+
             $this->setRoutes($routes);
         }
 
