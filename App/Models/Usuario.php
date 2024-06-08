@@ -252,7 +252,7 @@
             return $stmt->fetch(\PDO::FETCH_ASSOC);
         }
 
-		public function tema() {
+		public function tema() { // retornando o tema do usuario logado, por padrão o tema vem como 'tema'
 			$query = "select tema from usuarios where id = :id_usuario";
 			
 			$stmt = $this->db->prepare($query);
@@ -262,7 +262,7 @@
 			return $stmt->fetch(\PDO::FETCH_ASSOC);
 		}
 
-		public function alterarTema() {
+		public function alterarTema() { // ao clicar no botão de tema escuro, o 'tema' será alterado para 'temaEscuro'
 			$query = "update usuarios set tema = 'temaEscuro' where id = :id_usuario";
 			
 			$stmt = $this->db->prepare($query);
@@ -272,7 +272,7 @@
 			return $this;
 		}
 		
-		public function alterarTemaEscuro() {
+		public function alterarTemaEscuro() { // ao clicar no botão de tema claro, o 'temaEscuro' será alterado para 'tema'
 			$query = "update usuarios set tema = 'tema' where id = :id_usuario";
 			
 			$stmt = $this->db->prepare($query);

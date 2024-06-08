@@ -68,7 +68,7 @@
 
         }
 
-        public function getPorPagina($limit, $offset) {
+        public function getPorPagina($limit, $offset) { // vai retornar o total de tweets a partir do ponto passado por offset e vai limitar a 10
 
             $query = "
                 select 
@@ -98,7 +98,7 @@
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         }
     
-        public function getTotalRegistros() {
+        public function getTotalRegistros() { // vai retornar o total de tweets do usuario e dos usuarios que ele segue
     
             $query = "
                 select 
