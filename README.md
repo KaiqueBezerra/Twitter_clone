@@ -2,4 +2,4 @@ Dentro da pasta public -
 dar comando -
 php -S localhost:8080
 
-(TClone.png)
+![Imagem do projeto](TClone.png)
